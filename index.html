@@ -1,15 +1,17 @@
 <!--   Polynomial graphing application for soft dev class. Updated 2017.
-  Using bootstrap 3, we will try to keep responsive features to be used on mobile device -->
+  Using bootstrap 3, we will try to keep responsive features to be
+used on mobile device -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Quad Solver ;)</title>
+    <title>Calculators</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="quadDaddyScript.js"></script>
     <!-- styles to override bootstrap settings or add our own styles -->
     <style>
     /* Set gray background color and 100% height */
@@ -30,25 +32,44 @@
     }
 
     .coeff {
-        width: 80%;
-        background-color: #3856b7;
+        width: 100%;
+        background-color: #9b7c45;
         padding: 10px;
         border-radius: 20px;
-        color:   white;
+        color: black;
     }
 
     canvas {
         display: block;
         border-style: solid;
+        border-color: white;
         border-width: 5px;
-        background-color: #af6e3b;
+        background-color: #f7dcf0;
         margin-top: 5px;
+        width: 100%;
+    }
+
+    .answer {
+        width: 100%;
+        background-color: #9b7c45;
+        padding: 10px;
+        border-radius: 20px;
+        color: white;
+    }
+
+    .formInfo {
+        background-color: #9b7f43;
+    }
+
+    body {
+        background-image: url("https://cdn3.f-cdn.com/contestentries/190907/14768552/55214b84c787e_thumb900.jpg");
     }
     </style>
 </head>
 
-<body>
-    <!--  Nav bar that is responsive (container-fluid with data-toggle at collapse) -->
+<body onload="init()">
+    <!--  Nav bar that is responsive (container-fluid with data-toggle
+at collapse) -->
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -57,36 +78,54 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Math Solutions</a>
+                <a class="navbar-brand" href="#">Fox Can't Code For Shit .calc</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Linear Grapher</a></li>
-                    <li><a href="#2">Quadratic Grapher</a></li>
+                    <li class="active"><a href="">Quadratic Grapher</a></li>
+                    <li><a href="#2">Linear Grapher</a></li>
                     <li><a href="#3">Cubic Grapher</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <!--    our main body of divs that are responsive (go from in-line to block when screen is small) -->
+    <!--    our main body of divs that are responsive (go from in-line
+to block when screen is small) -->
     <div class="container-fluid">
         <div class="row content">
             <div class="col-sm-2 sidenav">
                 <div class="coeff">
                     <p class="formInfo">Coefficients go here
                         <br> a =
-                        <input size="5" type="text" id="linA" value="1">
+                        <input size="5" type="text" id="quadA" value="1">
                         <br> b =
                         <input size="5" type="text" id="linB" value="0">
                         <br> c =
                         <input size="5" type="text" id="constant" value="0">
                         <br>
-                        <button class="btn" onclick="">Submit Values</button>
+                        <button class="btn" onclick="QF()">Submit Values</button>
                     </p>
+                </div>
+                <div class="answer">
+                    <p id="solution1">X-int</p>
+                    <p id="solution2">X-int</p>
+                    <p id="vertex">Vertex</p>
+                    <p id="y-Int">Y-int</p>
+                    <p id="correspondingPoint">Corresponding Point</p>
                 </div>
             </div>
             <div class="col-sm-8 text-left">
                 <canvas class="canvasGrids" id="mycanvas"></canvas>
+                <p>
+                    <button type="button" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </p>
+                <p>
+                    <button type="button" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-minus"></span>
+                    </button>
+                </p>
             </div>
         </div>
     </div>
