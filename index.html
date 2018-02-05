@@ -112,19 +112,15 @@ to block when screen is small) -->
                     <p id="vertex">Vertex</p>
                     <p id="y-Int">Y-int</p>
                     <p id="correspondingPoint">Corresponding Point</p>
+                    <p id="symLine">Line of Symmetry</p>
                 </div>
             </div>
             <div class="col-sm-8 text-left">
                 <canvas class="canvasGrids" id="mycanvas"></canvas>
-                <p>
-                    <button type="button" class="btn btn-default btn-sm">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </button>
-                </p>
-                <p>
-                    <button type="button" class="btn btn-default btn-sm">
-                        <span class="glyphicon glyphicon-minus"></span>
-                    </button>
+                <button class="btn" onclick="QF()">Submit Values</button>
+                <button id="inZoom" class="btn" onclick="zoomIn(), QF()">+</button>
+                <button id="outZoom" class="btn" onclick="zoomOut(), QF()">-</button>
+                </button>
                 </p>
             </div>
         </div>
